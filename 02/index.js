@@ -24,6 +24,19 @@ const randomClothes = () => {
   return clothesSet;
 }
 
+const flatten = (arr) => {
+  let flat = [];
+
+  arr.forEach((v) => {
+    if(typeof v === 'object') {
+      flat = [...flat, ...v]
+    } else 
+    flat.push(v)
+  })
+
+  return flat;
+}
+
 const combinationCheck = () => {
   let combinations = randomClothes();
   let unique = true;
@@ -38,9 +51,12 @@ const combinationCheck = () => {
  if(duplicates.length !== combinations.length) {
    unique = false; 
  }
-//  console.trace(combinations, '=> Combinations');
-//  console.trace(duplicates, '=> Duplicates')
- return unique;
+
+ if(unique) {
+   let possible = flatten(combinations)
+   possible = possible.filter((v, i) => possible.indexOf(v) === i);
+   return `${unique}. Example of possible combination: ${JSON.stringify(possible)}`;
+ } else return `${unique}`;
 }
 
 console.log(combinationCheck());
