@@ -1,22 +1,27 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import path from 'path';
-import url from 'url';
+import { Link } from 'react-router-dom';
+
+const styles = {
+  navStyle: {
+    backgroundColor: 'rgb(241, 88, 79)',
+    height: '8vh',
+    minHeight: 50,
+    margin: '0 10px',
+  },
+};
 
 export default function NavBar() {
-
   return (
-    <Navbar bg='dark' variant='dark'>
-      <Navbar.Brand href='#home'>
+    <nav className='navbar fixed-top' style={styles.navStyle}>
+      <Link to='/'>
         <img
           alt=''
-          src={() => import('../../public/asset/klob-logo.png')}
-          width='30'
-          height='30'
+          src={'http://localhost:8080/klob-logo.png'}
+          width='45'
+          height='45'
           className='d-inline-block align-top'
         />
-        {' React Bootstrap'}
-      </Navbar.Brand>
-    </Navbar>
+      </Link>
+    </nav>
   );
 }
